@@ -1,0 +1,115 @@
+#projector_shipping_info #projector_price_value_wrapper {
+    display: none;
+}
+
+.fashion_view #projector_shipping_info .projector_label {
+    display: none;
+}
+
+.note-text {
+    display: inline;
+}
+
+#shipping_info_container {
+    margin-bottom: 40px;
+}
+
+#projector_number {
+    font-size: 2em;
+    transform: translate(0px, 2px);
+}
+
+div.component_projector_cms {
+    margin-bottom: 0;
+}
+
+#projector_form {
+    padding: 70px 15px 0px;
+}
+
+@media (max-width: 757px) {
+
+    .basketedit_summary.fixed,
+    .basketedit_summary_buttons.fixed {
+        background-color: white;
+    }
+
+
+    #projector_number_cont {
+        flex-basis: 25%;
+        display: flex;
+        border-bottom: none;
+    }
+
+    #projector_buttons {
+        display: flex !important;
+    }
+
+    #projector_buy_section .projector_label {
+        flex-basis: 10%;
+    }
+
+    #projector_buy_section {
+        display: flex;
+        align-items: center;
+    }
+
+    #projector_number,
+    #projector_number_up,
+    #projector_number_down {
+        height: auto;
+    }
+
+    .fashion_view a.projector_buttons_obs {
+        text-align: right;
+        margin: 15px -5px !important;
+    }
+
+    #projector_form button.projector_butttons_buy {
+        margin: 0 0 0 10px;
+        line-height: 30px;
+    }
+
+    #projector_prices_wrapper #projector_price_value_wrapper {
+        display: none;
+    }
+
+    #projector_shipping_info #projector_price_value_wrapper {
+        display: block;
+        text-align: right;
+    }
+
+    .fashion_view #projector_shipping_info {
+        display: flex !important;
+        align-items: flex-end;
+    }
+
+    #projector_price_value_wrapper {
+        flex-basis: 50%;
+        margin-left: auto;
+    }
+
+    strong.projector_price_value {
+        text-align: right;
+    }
+
+    .product-name-wrapper,
+    .fashion_view #projector_prices_wrapper {
+        width: 100%;
+    }
+
+    .projector_navigation .note {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    .note span {
+        text-align: right;
+    }
+
+    .note-text {
+        display: none;
+    }
+
+}

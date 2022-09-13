@@ -1,0 +1,170 @@
+var PWAHandler = {
+    'cacheName' : 'iai-pwa-out-of-internet-1'
+};
+
+try {
+    PWAHandler.registerServiceWorker = function () {
+        return navigator.serviceWorker.register('/pwa_sw.js')
+            .then(function (registration) {
+                return registration;
+            })
+            .catch(function (err) {
+                console.log('Unable to register pwa service worker.', err);
+            });
+    };
+
+    PWAHandler.checkCompatibility = function () {
+        return _adblock == false && ('serviceWorker' in navigator);
+    };
+
+    PWAHandler.isIos = function() {
+        var userAgent = window.navigator.userAgent.toLowerCase();
+        return /iphone|ipad|ipod/.test(userAgent);
+    };
+
+    PWAHandler.isInStandaloneMode = function () {
+        return ('standalone' in window.navigator) && (window.navigator.standalone);
+    };
+
+    PWAHandler.regenerateCache = function () {
+        var lang = null;
+        if ('languages' in navigator) {
+            lang = navigator.languages[0].substring(0, 2);
+        } else {
+            if ('language' in navigator) {
+                lang = navigator.language.substring(0, 2);
+            } else {
+                if ('userLanguage' in navigator) {
+                    lang = navigator.userLanguage.substring(0, 2);
+                }
+            }
+        }
+
+        var offlinePage = (lang === 'pl' || lang === 'PL')
+            ? '/data/include/pwa/pwa-offline-pl.html'
+            : '/data/include/pwa/pwa-offline-en.html';
+
+        var filesToCache = [
+            '/data/include/pwa/pwa-out-of-internet.gif',
+            '/data/include/pwa/pwa-offline-pl.html',
+            '/data/include/pwa/pwa-offline-en.html'
+        ];
+
+        caches.open(PWAHandler.cacheName).then(function (cache) {
+            fetch(offlinePage).then(function(response) {
+                if (response.ok) {
+                    return cache.addAll(filesToCache) && cache.put('/pwa_offline.html', response);
+                }
+            });
+        });
+    }
+
+    PWAHandler.checkCache = function() {
+        caches.open(PWAHandler.cacheName).then(function (cache) {
+            cache.keys().then(function(keys) {
+                if (keys.length < 4) {
+                    PWAHandler.regenerateCache();
+                }
+            });
+        });
+    }
+
+    PWAHandler.init = function () {
+        if (!PWAHandler.checkCompatibility()) {
+            return;
+        }
+
+        PWAHandler.swRegistration = PWAHandler.registerServiceWorker();
+        PWAHandler.checkCache();
+    };
+
+    PWAHandler.init();
+
+    //iOS dodanie do ekranu domowego
+    if (PWAHandler.isIos() && !PWAHandler.isInStandaloneMode()) {
+        this.setState({showInstallMessage: true});
+    }
+
+} catch(e) {
+    console.log(e);
+}
+
+//Symulacja manifestu dla iOS'a
+(function() {
+    var startUrlEl = document.querySelector("meta[name=msapplication-starturl]");
+    if(!!startUrlEl === true && navigator.standalone === true) {
+        var lastUrl = localStorage["navigate"];
+        history.pushState({launched: (!!lastUrl == false && history.length === 1)}, undefined, lastUrl || startUrlEl.content);
+        localStorage.removeItem("navigate");
+
+        // Intercept all anchor clicks and keep fullscreen if in origin
+        document.addEventListener("click", function(e) {
+            var target = e.target;
+            if(target.tagName === 'A') {
+
+                var href = target.getAttribute("href");
+                var linkedUrl = new URL(target.href);
+                if(linkedUrl.origin === location.origin) {
+                    e.preventDefault();
+                    location.href = href;
+                }
+                else {
+                    // When we are navigating away store the state so we can resume.
+                    localStorage["navigate"] = location.href;
+                }
+            }
+        });
+    }
+})();
+
+document.addEventListener('DOMContentLoaded', function(){
+    window.addEventListener('beforeunload', function() {
+        if (window.matchMedia('(display-mode: standalone)').matches || window.matchMedia('(display-mode: fullscreen)').matches) {
+            document.getElementsByTagName("BODY")[0].classList.add("load-content");
+        }
+    });
+}, false);
+
+window.addEventListener('load', function() {
+    var stylePWA = {
+        bottom: 0,
+        background: '#eb5467',
+        left: 0,
+        position:'fixed',
+        right:0,
+        textAlign:'center',
+        zIndex: 99999,
+        display:'none',
+        fontFamily:'Arial,sans-serif'
+    };
+    var elePWA = document.createElement('div');
+    elePWA.setAttribute('id','offlineInfo');
+    document.querySelector('body').appendChild(elePWA);
+
+    var infoBlockPWA = document.querySelector('#offlineInfo');
+    infoBlockPWA.innerHTML ='<span id="offlineInfo_sub" style="color:#fff;padding:3px 10px;font-size:12px;display:block;"></span>';
+    var infoBlockPWASub = document.querySelector('#offlineInfo_sub');
+
+
+    var currStyle;
+    for (currStyle in stylePWA)
+        infoBlockPWA.style[currStyle] = stylePWA[currStyle];
+
+    function updateOnlineStatus(event) {
+        var condition = navigator.onLine ? 'online' : 'offline';
+
+        infoBlockPWASub.innerText = statusPWA[condition].txt;
+        infoBlockPWASub.style.background = statusPWA[condition].bg;
+        infoBlockPWA.style.display = 'block';
+
+        if(condition === 'online')
+            setTimeout(function () {
+                infoBlockPWA.style.display = 'none';
+            }, 1500);
+    }
+
+    setTimeout(function() {
+        window.addEventListener('online',  updateOnlineStatus);
+        window.addEventListener('offline', updateOnlineStatus);
+    }, 1000);
+});
