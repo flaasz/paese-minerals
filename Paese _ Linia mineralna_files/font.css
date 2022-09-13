@@ -1,0 +1,15 @@
+@font-face {
+    font-family: "GTSecraFine";
+    src: url("GT-Sectra-Fine-Medium.woff") format('woff');
+}
+
+@font-face {
+    font-family: "GTSecraFine";
+    src: url("GT-Sectra-Fine-Bold.woff") format('woff');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "FoundersGrotesk";
+    src: url("FoundersGroteskRegular.woff") format('woff');
+}
