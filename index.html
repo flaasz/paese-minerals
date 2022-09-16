@@ -2189,7 +2189,539 @@
 
 
 
+<style>
+    
 
+@font-face {
+    font-family: "Founders Grotesk";
+    src: url("https://paese.pl/gfx/pol/FoundersGroteskRegular.woff") format('woff');
+}
+
+@font-face {
+    font-family: "Founders Grotesk";
+    src: url("https://paese.pl/gfx/pol/FoundersGroteskSemibold.woff") format('woff');
+    font-weight: 600;
+}
+
+
+.imgcursorwrapper {
+    position: relative;
+}
+
+#customCursor {
+    cursor: none;
+    margin: 0 60px;
+}
+
+
+#customCursorRender {
+    top: 0;
+    left: 0;
+    height: 50px;
+    width: 280px;
+    background: url("https://paese.pl/data/include/cms/2022-minerals/seemorexhair.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    z-index: 10;
+    cursor: none;
+    -webkit-transition: all 0.7s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: all 0.7s cubic-bezier(0.165, 0.84, 0.44, 1);
+    pointer-events: none;
+
+}
+
+#customCursorRenderf {
+    top: 0;
+    left: 0;
+    height: 50px;
+    width: 280px;
+    background: url("https://paese.pl/data/include/cms/2022-minerals/xhair.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    z-index: 10;
+    cursor: none;
+    pointer-events: none;
+
+}
+
+header,
+footer,
+#container,
+#opinions_badge {
+    display: none;
+}
+
+#body-mineral {
+    background: #F3EFE9;
+    width: 100%;
+    max-width: 1580px;
+    margin: 0 auto;
+}
+
+#body-mineral-wrapper {
+    background: #F3EFE9;
+    position: absolute;
+    top: 0;
+    display: flex;
+    top: 0;
+    justify-content: center;
+    width: 100%;
+}
+
+#header {
+    position: absolute;
+    left: 0;
+    display: flex;
+    padding: 60px;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 80%;
+    z-index: 1;
+}
+
+#header .mineral {
+    position: absolute;
+    width: 568px;
+    height: 498px;
+    left: 152px;
+    top: -219px;
+}
+
+#header .links {
+    display: flex;
+    gap: 2.5em;
+    z-index: 1;
+}
+
+.header-link {
+    font-family: 'Founders Grotesk';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #000000;
+    text-decoration: none;
+}
+
+#fixedLogo {
+    position: fixed;
+    top: 46px;
+    right: 35px;
+    z-index: 10;
+}
+
+.heading {
+    position: relative;
+    width: 100%;
+}
+
+.mgtop350 {
+    margin-top: 350px;
+}
+
+.mgtop100 {
+    margin-top: 100px;
+}
+
+.heading h2 {
+    font-family: 'Founders Grotesk';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 50px;
+    line-height: 60px;
+    text-align: center;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #000000;
+    z-index: 10;
+}
+
+.heading .banner {
+    display: flex;
+    flex-direction: column;
+}
+
+.heading .banner h2 {
+    padding: 30% 0;
+}
+
+.heading .banner p {
+    font-family: 'Founders Grotesk';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 25px;
+    line-height: 30px;
+    text-align: center;
+    max-width: 900px;
+    color: #000000;
+    margin: 0 auto;
+    z-index: 10;
+}
+
+
+.heading .mingreen {
+    position: absolute;
+    width: 52.5%;
+    left: -25%;
+    top: 222.67px;
+    transform: rotate(-79.93deg);
+}
+
+.heading .minpink {
+    position: absolute;
+    width: 56.7%;
+    left: 3.7%;
+    top: 170.82px;
+    transform: rotate(23.11deg);
+}
+
+.heading .minred {
+    position: absolute;
+    width: 64.6%;
+    left: 43%;
+    top: 203.06px;
+    transform: rotate(126.53deg);
+}
+
+.heading .minpurple {
+    position: absolute;
+    width: 61%;
+    left: 70.1%;
+    top: 114px;
+}
+
+.heading .minblue {
+    position: absolute;
+    width: 49.4%;
+    left: 72%;
+    top: 674px;
+}
+
+#section-nour {
+    margin-top: 200px;
+    display: flex;
+}
+
+#section-hydr {
+    display: flex;
+}
+
+#section-powder {
+    margin-top: 100px;
+    position: relative;
+}
+
+#section-powder .product-swapper {
+    display: flex;
+    position: absolute;
+    top: 0;
+}
+
+#section-powder .product-swapper.foundation {
+    position: relative;
+}
+
+#section-brushes {
+    margin-top: 100px;
+    position: relative;
+}
+
+#section-brushes .product-swapper {
+    display: flex;
+    position: absolute;
+    top: 0;
+}
+
+#section-brushes .product-swapper.brush1 {
+    position: relative;
+}
+
+
+.imagewrapper {
+    position: relative;
+    width: 50%;
+    display: flex;
+    align-items: baseline;
+}
+
+.img-alt {
+    position: absolute;
+    top: 0;
+}
+
+/*.img1-alt,
+.img2-alt {
+    z-index: 1 !important;
+}*/
+
+.textwrapper {
+    padding: 80px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #000000;
+}
+
+.textwrapper a {
+    color: #000000;
+}
+
+.title {
+    font-family: 'Founders Grotesk';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 35px;
+    line-height: 42px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+}
+
+.title .sub {
+    font-size: 25px;
+    letter-spacing: 0.16em;
+}
+
+.numination {
+    font-family: 'Founders Grotesk';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+}
+
+.descriptionwrapper {
+    font-family: 'Founders Grotesk';
+    font-style: normal;
+    font-size: 25px;
+    line-height: 30px;
+    position: relative;
+}
+
+.description {
+    max-width: 540px;
+}
+
+.description ul li,
+.description-alt ul li {
+    margin-left: 30px;
+}
+
+
+.description-alt {
+    position: absolute;
+    bottom: 0;
+    max-width: 540px;
+}
+
+.showmore {
+    font-family: 'Founders Grotesk';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0.25em;
+    text-decoration-line: underline;
+    text-transform: uppercase;
+    cursor: pointer;
+    color: #60BFB8;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.offanim {
+    transition: 500ms opacity ease-in-out;
+    opacity: 1;
+
+}
+
+.off {
+    opacity: 0;
+    pointer-events: none;
+}
+
+a.buybtn {
+    font-family: 'Founders Grotesk';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    background: #60BFB8;
+    padding: 23px 40px 17px 40px;
+    color: #F3EFE9;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.nxtbtn {
+    cursor: pointer;
+    font-family: 'Founders Grotesk';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    border: 1px solid #60BFB8;
+    padding: 23px 40px 17px 40px;
+    color: #60BFB8;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.btn-wrapper {
+    display: flex;
+    gap: 1em;
+}
+
+.swatch-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.swatch-wrapper img {
+    max-width: 150px;
+    margin-left: -50px;
+    margin-top: -50px;
+}
+
+#section-makeup {
+    display: flex;
+    gap: 80px;
+    font-family: 'Founders Grotesk';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    color: #000000;
+}
+
+#section-makeup a {
+    color: #000000;
+}
+
+#section-makeup ol li {
+    margin-left: 1.5em;
+}
+
+.step {
+    flex: 1;
+}
+
+#section-makeup h2 {
+    font-family: 'Founders Grotesk';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 35px;
+    line-height: 42px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #000000;
+    margin-top: 2em;
+}
+
+.mg150 {
+    margin: 150px 0;
+}
+
+.mgdown100 {
+    margin-bottom: 100px;
+}
+
+#section-mineralsused {
+    font-family: 'Founders Grotesk';
+    font-style: normal;
+    font-size: 25px;
+    line-height: 30px;
+    color: #000000;
+    background: #EAE4DC;
+    padding: 130px;
+    margin-top: 150px;
+}
+
+#section-mineralsused img {
+    max-width: 290px;
+}
+
+#section-mineralsused .flexwrapper {
+    display: flex;
+    gap: 80px;
+}
+
+#section-actives {
+    font-family: 'Founders Grotesk';
+    font-style: normal;
+    font-size: 25px;
+    line-height: 30px;
+    color: #000000;
+    margin-top: 150px;
+}
+
+#section-actives img {
+    max-width: 130px;
+    max-height: 130px;
+}
+
+.coli {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+.rowi {
+    display: flex;
+    gap: 60px;
+    max-width: 700px;
+}
+
+#section-actives .flexwrapper {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+}
+
+#section-features {
+    font-family: 'Founders Grotesk';
+    font-style: normal;
+    font-size: 25px;
+    line-height: 30px;
+    color: #000000;
+    margin-top: 150px;
+}
+
+#section-features img {
+    max-width: 330px;
+    margin-bottom: -50px;
+    margin-left: -50px;
+}
+
+#section-features .flexwrapper {
+    display: flex;
+    column-gap: 80px;
+    flex-wrap: wrap;
+    max-width: 1350px;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+#section-features .flexwrapper .step {
+    max-width: 350px;
+}
+</style>
 
                         <div id="body-mineral-wrapper">
                             <div id="body-mineral">
@@ -3097,6 +3629,169 @@
                                 </div>
 
 
+                                <script>
+                                    $("#container").after($("#body-mineral-wrapper"));
+
+$("#showmore1-alt").click(function () {
+    $(".description1-alt").toggleClass("off");
+    $(".img1-alt").toggleClass("off");
+    $(".description1").toggleClass("off");
+});
+$("#showmore2-alt").click(function () {
+    $(".description2-alt").toggleClass("off");
+    $(".img2-alt").toggleClass("off");
+    $(".description2").toggleClass("off");
+});
+$("#showmore3-alt").click(function () {
+    $(".description3-alt").toggleClass("off");
+    $(".img3-alt").toggleClass("off");
+    $(".description3").toggleClass("off");
+});
+$("#showmore4-alt").click(function () {
+    $(".description4-alt").toggleClass("off");
+    $(".img4-alt").toggleClass("off");
+    $(".description4").toggleClass("off");
+});
+$("#showmore5-alt").click(function () {
+    $(".description5-alt").toggleClass("off");
+    $(".img5-alt").toggleClass("off");
+    $(".description5").toggleClass("off");
+});
+$("#showmore6-alt").click(function () {
+    $(".description6-alt").toggleClass("off");
+    $(".img6-alt").toggleClass("off");
+    $(".description6").toggleClass("off");
+});
+$("#showmore7-alt").click(function () {
+    $(".description7-alt").toggleClass("off");
+    $(".img7-alt").toggleClass("off");
+    $(".description7").toggleClass("off");
+});
+$("#showmore8-alt").click(function () {
+    $(".description8-alt").toggleClass("off");
+    $(".img8-alt").toggleClass("off");
+    $(".description8").toggleClass("off");
+});
+$("#showmore9-alt").click(function () {
+    $(".description9-alt").toggleClass("off");
+    $(".img9-alt").toggleClass("off");
+    $(".description9").toggleClass("off");
+});
+$("#showmore1").click(function () {
+    $(".description1-alt").toggleClass("off");
+    $(".img1-alt").toggleClass("off");
+    $(".description1").toggleClass("off");
+});
+$("#showmore2").click(function () {
+    $(".description2-alt").toggleClass("off");
+    $(".img2-alt").toggleClass("off");
+    $(".description2").toggleClass("off");
+});
+$("#showmore3").click(function () {
+    $(".description3-alt").toggleClass("off");
+    $(".img3-alt").toggleClass("off");
+    $(".description3").toggleClass("off");
+});
+$("#showmore4").click(function () {
+    $(".description4-alt").toggleClass("off");
+    $(".img4-alt").toggleClass("off");
+    $(".description4").toggleClass("off");
+});
+$("#showmore5").click(function () {
+    $(".description5-alt").toggleClass("off");
+    $(".img5-alt").toggleClass("off");
+    $(".description5").toggleClass("off");
+});
+$("#showmore6").click(function () {
+    $(".description6-alt").toggleClass("off");
+    $(".img6-alt").toggleClass("off");
+    $(".description6").toggleClass("off");
+});
+$("#showmore7").click(function () {
+    $(".description7-alt").toggleClass("off");
+    $(".img7-alt").toggleClass("off");
+    $(".description7").toggleClass("off");
+});
+$("#showmore8").click(function () {
+    $(".description8-alt").toggleClass("off");
+    $(".img8-alt").toggleClass("off");
+    $(".description8").toggleClass("off");
+});
+$("#showmore9").click(function () {
+    $(".description9-alt").toggleClass("off");
+    $(".img9-alt").toggleClass("off");
+    $(".description9").toggleClass("off");
+});
+
+$(".next3").click(function () {
+    $(".foundation").addClass("off");
+    $(".foundation1").addClass("off");
+    $(".blush").addClass("off");
+    $(".bronzer").addClass("off");
+    $(".highlighter").addClass("off");
+    $(".foundation1").removeClass("off");
+});
+$(".next4").click(function () {
+    $(".foundation").addClass("off");
+    $(".foundation1").addClass("off");
+    $(".blush").addClass("off");
+    $(".bronzer").addClass("off");
+    $(".highlighter").addClass("off");
+    $(".blush").removeClass("off");
+});
+$(".next5").click(function () {
+    $(".foundation").addClass("off");
+    $(".foundation1").addClass("off");
+    $(".blush").addClass("off");
+    $(".bronzer").addClass("off");
+    $(".highlighter").addClass("off");
+    $(".bronzer").removeClass("off");
+});
+$(".next6").click(function () {
+    $(".foundation").addClass("off");
+    $(".foundation1").addClass("off");
+    $(".blush").addClass("off");
+    $(".bronzer").addClass("off");
+    $(".highlighter").addClass("off");
+    $(".highlighter").removeClass("off");
+});
+$(".next7").click(function () {
+    $(".foundation").addClass("off");
+    $(".foundation1").addClass("off");
+    $(".blush").addClass("off");
+    $(".bronzer").addClass("off");
+    $(".highlighter").addClass("off");
+    $(".foundation").removeClass("off");
+});
+$(".next8").click(function () {
+    $(".brush1").addClass("off");
+    $(".brush2").addClass("off");
+    $(".brush2").removeClass("off");
+});
+$(".next9").click(function () {
+    $(".brush1").addClass("off");
+    $(".brush2").addClass("off");
+    $(".brush1").removeClass("off");
+});
+
+
+
+var offset = $('#customCursor').offset();
+
+$("#customCursor").mousemove(function (e) {
+
+
+    var x = e.pageX - offset.left - 25;
+    var y = e.pageY - offset.top - 25;
+
+    var translate = 'translate(' + x + 'px,' + y + 'px)';
+
+
+    $('#customCursorRender').css('transform', translate);
+    $('#customCursorRenderf').css('transform', translate);
+
+})
+                                </script>
 
 
 
